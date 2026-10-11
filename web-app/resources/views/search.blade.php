@@ -2,10 +2,6 @@
 
 @section('title', 'ค้นหาของหาย')
 
-@section('intro')
-    @include('partials.intro')
-@endsection
-
 @section('content')
 
     <h2><strong>ค้นหาของหาย</strong></h2>

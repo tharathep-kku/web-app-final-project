@@ -1,10 +1,6 @@
 @extends('layouts.site')
 
 @section('title', 'แจ้งของหาย')
-@section('intro')
-    @include('partials.intro')
-@endsection
-
 @section('content')
     <h2><strong>แจ้งของหาย / แจ้งพบของ</strong></h2>
     <p>กรอกข้อมูลให้ละเอียดที่สุด เพื่อให้เจ้าของหรือผู้ที่เก็บได้ค้นหาเจอได้ง่าย</p>

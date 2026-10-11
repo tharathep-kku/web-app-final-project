@@ -24,7 +24,7 @@
             </ul>
 
             <div class="d-flex align-items-center gap-2">
-                <a class="btn btn-primary btn-pop btn-sm" href="{{ route('posts.create') }}">+ แจ้งของ</a>
+                <a class="btn btn-primary btn-pop btn-sm" href="{{ route('posts.create') }}">แจ้งของหาย/พบของหาย</a>
                 @guest
                     <a class="btn btn-outline-secondary btn-sm" href="{{ route('login') }}">เข้าสู่ระบบ</a>
                 @endguest

@@ -2,10 +2,6 @@
 
 @section('title', $returnUnit->name)
 
-@section('intro')
-    @include('partials.intro')
-@endsection
-
 @section('content')
 
     <h2><strong>{{ $returnUnit->name }}</strong></h2>

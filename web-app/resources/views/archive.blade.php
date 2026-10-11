@@ -2,10 +2,6 @@
 
 @section('title', 'คลังประกาศของคืน')
 
-@section('intro')
-    @include('partials.intro')
-@endsection
-
 @section('note', '*หมายเหตุ: ประกาศในคลังยังไม่ถูกลบออกจากระบบ เก็บไว้เพื่อให้ตรวจสอบย้อนหลังได้')
 
 @section('content')

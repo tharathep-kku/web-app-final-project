@@ -4,10 +4,6 @@
 
 @section('note', '*หมายเหตุ: ตัวเลขทั้งหมดคำนวณจากข้อมูลในฐานข้อมูล ณ เวลาที่เปิดหน้านี้')
 
-@section('intro')
-    @include('partials.intro')
-@endsection
-
 @section('content')
     <p>สถิติของระบบ (ดูโดย {{ $admin->name }})</p>
 

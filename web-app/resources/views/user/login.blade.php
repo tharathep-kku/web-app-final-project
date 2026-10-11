@@ -2,10 +2,6 @@
 
 @section('title', 'เข้าสู่ระบบ')
 
-@section('intro')
-    @include('partials.intro')
-@endsection
-
 @section('content')
 
     <h2><strong>เข้าสู่ระบบ</strong></h2>

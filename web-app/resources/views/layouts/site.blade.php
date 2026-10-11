@@ -16,7 +16,14 @@
 
     <div class="container py-4">
         <h1 class="wordmark">KKU <span>RETURN</span><small>lost and found</small></h1>
-        @yield('intro')
+
+        <div class="intro text-center mb-4">
+            <p class="lead">Welcome to KKU Return ที่จะช่วยคุณตามหาของสำคัญ หรือเจ้าของที่พัดพรากไปเอง</p>
+            <p class="text-muted">ศูนย์รวมแจ้งของหายและแจ้งพบของภายในมหาวิทยาลัยขอนแก่น ปลอดภัย ตรวจสอบได้ ลดความเสี่ยงจากการแอบอ้าง</p>
+            <span class="badge rounded-pill text-bg-light border">
+                <i class="bi bi-shield-check"></i> มีหลักฐานยืนยันการส่งมอบทุกครั้ง
+            </span>
+        </div>
 
         @yield('content')
 

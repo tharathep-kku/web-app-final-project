@@ -5,7 +5,7 @@
 @section('content')
     <div class="row align-items-center g-4 mb-4">
         <div class="col-lg-7">
-            <h2 class="fw-bold section-heading">ศูนย์รวมแจ้งของหาย – พบของ ม.ขอนแก่น</h2>
+            <h2 class="fw-bold">ศูนย์รวมแจ้งของหาย – พบของ ม.ขอนแก่น</h2>
             <p class="text-secondary">ปลอดภัย ตรวจสอบได้ มีหลักฐานยืนยันการส่งมอบทุกครั้ง</p>
 
             <form method="GET" action="{{ route('search.home') }}" class="d-flex bg-white rounded-4 shadow-sm gap-2 p-4 mb-4">

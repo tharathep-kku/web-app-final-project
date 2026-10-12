@@ -106,7 +106,7 @@
         <tbody align="center">
             @forelse ($items as $item)
                 <tr>
-                    <td class="text-start">{{ $item->title }}</td>
+                    <td>{{ $item->title }}</td>
                     <td>
                         @if ($item->image_url)
                             <img src="{{ asset($item->image_url) }}" alt="{{ $item->title }}" width="100">
@@ -116,8 +116,8 @@
                     </td>
                     <td>{{ $item->type === 'found' ? 'พบของ' : 'ของหาย' }}</td>
                     <td>{{ $item->category_name }}</td>
-                    <td class="text-start">{{ $item->location }}</td>
-                    <td class="text-start">{{ $item->description }}</td>
+                    <td>{{ $item->location }}</td>
+                    <td>{{ $item->description }}</td>
                     <td>{{ $item->event_date }}</td>
                     <td>{{ $item->status }}</td>
                     <td>

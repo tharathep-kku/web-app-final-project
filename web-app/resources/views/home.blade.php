@@ -48,35 +48,45 @@
             </div>
         </div>
     </div>
-    <div class="bg-white rounded-4 shadow-sm p-4 mb-4">
-        <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
+    <form method="GET" action="{{ route('home') }}" class="bg-white rounded-4 shadow-sm p-4 mb-4">
+        <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
             <span class="small fw-medium">ประเภทการแจ้ง:</span>
-            <a href="{{ route('home', request()->except(['type', 'page'])) }}" class="btn btn-sm rounded-pill {{ $type === '' ? 'btn-primary' : 'btn-outline-secondary' }}">ทั้งหมด</a>
-            <a href="{{ route('home', array_merge(request()->except('page'), ['type' => 'found'])) }}" class="btn btn-sm rounded-pill {{ $type === 'found' ? 'btn-primary' : 'btn-outline-secondary' }}">พบของ</a>
-            <a href="{{ route('home', array_merge(request()->except('page'), ['type' => 'lost'])) }}" class="btn btn-sm rounded-pill {{ $type === 'lost' ? 'btn-danger' : 'btn-outline-secondary' }}">ของหาย</a>
+            <input type="radio" class="btn-check" id="type_all" name="type" value="" {{ $type === '' ? 'checked' : '' }}>
+            <label class="btn btn-sm rounded-pill btn-outline-primary btn-pop" for="type_all">ทั้งหมด</label>
+            <input type="radio" class="btn-check" id="type_found" name="type" value="found" {{ $type === 'found' ? 'checked' : '' }}>
+            <label class="btn btn-sm rounded-pill btn-outline-primary btn-pop" for="type_found">พบของ</label>
+            <input type="radio" class="btn-check" id="type_lost" name="type" value="lost" {{ $type === 'lost' ? 'checked' : '' }}>
+            <label class="btn btn-sm rounded-pill btn-outline-danger btn-pop" for="type_lost">ของหาย</label>
         </div>
 
         @php
             $d7 = date('Y-m-d', strtotime('-7 days'));
             $d30 = date('Y-m-d', strtotime('-30 days'));
             $d3m = date('Y-m-d', strtotime('-3 months'));
-            $today = date('Y-m-d');
         @endphp
 
-        <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
+        <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
             <span class="small fw-medium">ช่วงเวลา:</span>
-            <a href="{{ route('home', request()->except(['from', 'to', 'page'])) }}" class="btn btn-sm rounded-pill {{ $from === '' ? 'btn-primary' : 'btn-outline-secondary' }}">ทั้งหมด</a>
-            <a href="{{ route('home', array_merge(request()->except('page'), ['from' => $d7, 'to' => $today])) }}" class="btn btn-sm rounded-pill {{ $from === $d7 ? 'btn-primary' : 'btn-outline-secondary' }}">7 วันล่าสุด</a>
-            <a href="{{ route('home', array_merge(request()->except('page'), ['from' => $d30, 'to' => $today])) }}" class="btn btn-sm rounded-pill {{ $from === $d30 ? 'btn-primary' : 'btn-outline-secondary' }}">30 วันล่าสุด</a>
-            <a href="{{ route('home', array_merge(request()->except('page'), ['from' => $d3m, 'to' => $today])) }}" class="btn btn-sm rounded-pill {{ $from === $d3m ? 'btn-primary' : 'btn-outline-secondary' }}">3 เดือนล่าสุด</a>
+            <input type="radio" class="btn-check" id="from_all" name="from" value="" {{ $from === '' ? 'checked' : '' }}>
+            <label class="btn btn-sm rounded-pill btn-outline-primary btn-pop" for="from_all">ทั้งหมด</label>
+            <input type="radio" class="btn-check" id="from_7" name="from" value="{{ $d7 }}" {{ $from === $d7 ? 'checked' : '' }}>
+            <label class="btn btn-sm rounded-pill btn-outline-primary btn-pop" for="from_7">7 วันล่าสุด</label>
+            <input type="radio" class="btn-check" id="from_30" name="from" value="{{ $d30 }}" {{ $from === $d30 ? 'checked' : '' }}>
+            <label class="btn btn-sm rounded-pill btn-outline-primary btn-pop" for="from_30">30 วันล่าสุด</label>
+            <input type="radio" class="btn-check" id="from_3m" name="from" value="{{ $d3m }}" {{ $from === $d3m ? 'checked' : '' }}>
+            <label class="btn btn-sm rounded-pill btn-outline-primary btn-pop" for="from_3m">3 เดือนล่าสุด</label>
         </div>
 
-        <div class="d-flex flex-wrap gap-2 align-items-center mb-0">
+        <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
             <span class="small fw-medium">เรียงตาม:</span>
-            <a href="{{ route('home', array_merge(request()->query(), ['sort' => 'new', 'page' => 1])) }}" class="btn btn-sm rounded-pill {{ $sort !== 'old' ? 'btn-primary' : 'btn-outline-secondary' }}">ใหม่สุด</a>
-            <a href="{{ route('home', array_merge(request()->query(), ['sort' => 'old', 'page' => 1])) }}" class="btn btn-sm rounded-pill {{ $sort === 'old' ? 'btn-primary' : 'btn-outline-secondary' }}">เก่าสุด</a>
+            <input type="radio" class="btn-check" id="sort_new" name="sort" value="new" {{ $sort !== 'old' ? 'checked' : '' }}>
+            <label class="btn btn-sm rounded-pill btn-outline-primary btn-pop" for="sort_new">ใหม่สุด</label>
+            <input type="radio" class="btn-check" id="sort_old" name="sort" value="old" {{ $sort === 'old' ? 'checked' : '' }}>
+            <label class="btn btn-sm rounded-pill btn-outline-primary btn-pop" for="sort_old">เก่าสุด</label>
         </div>
-    </div>
+
+        <button type="submit" class="btn btn-danger btn-pop px-4">กรองของหาย</button>
+    </form>
     <!-- ---------- จำนวนผลลัพธ์ ---------- -->
     <p aria-live="polite">
         พบ {{ $items->total() }} รายการที่ยังไม่เข้าคลัง

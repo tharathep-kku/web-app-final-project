@@ -16,11 +16,11 @@
             <div class="col-12 col-md-6">
                 <label for="type" class="form-label fw-semibold d-block">ประเภทการแจ้ง:</label>
                 <input type="radio" class="btn-check" id="type_all" name="type" value="" {{ $type === '' ? 'checked' : '' }}>
-                <label class="btn btn-sm rounded-pill btn-outline-primary" for="type_all">ทั้งหมด</label>
+                <label class="btn btn-sm rounded-pill btn-outline-primary btn-pop flex-fill" for="type_all">ทั้งหมด</label>
                 <input type="radio" class="btn-check" id="type_found" name="type" value="found" {{ $type === 'found' ? 'checked' : '' }}>
-                <label class="btn btn-sm rounded-pill btn-outline-primary" for="type_found">พบของ</label>
+                <label class="btn btn-sm rounded-pill btn-outline-primary btn-pop flex-fill" for="type_found">พบของ</label>
                 <input type="radio" class="btn-check" id="type_lost" name="type" value="lost" {{ $type === 'lost' ? 'checked' : '' }}>
-                <label class="btn btn-sm rounded-pill btn-outline-danger" for="type_lost">ของหาย</label>
+                <label class="btn btn-sm rounded-pill btn-outline-danger btn-pop flex-fill" for="type_lost">ของหาย</label>
             </div>
             
             <div class="col-12">

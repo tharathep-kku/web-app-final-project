@@ -61,7 +61,7 @@ h1, h2, h3 { font-family: 'Kanit', sans-serif; }
 
 .btn-pop {
   border-radius: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   box-shadow: 0 4px 0 rgba(0,0,0,.15);
 }
 .btn-pop:active {
@@ -70,17 +70,22 @@ h1, h2, h3 { font-family: 'Kanit', sans-serif; }
 }
 
 /* สีตาราง */
+
 .table-kku thead th {
   background: var(--b-found);
   color: #fff;
   border-bottom: 0;
   text-align: center;
+  font-weight: 500;
 }
 
 .table-kku tbody tr:nth-child(even) {
   background: rgba(14, 154, 167, 0.07);
 }
 
+.table-white td { 
+  background-color: #ffffff; 
+}
 /* หัวข้อใหญ่แบบโลโก้ */
 .wordmark {
   font-family: 'Baloo 2', sans-serif;
@@ -111,6 +116,65 @@ button:not([class]) {
   border-radius: .5rem;
   padding: .35rem .9rem;
   font-family: inherit;
+}
+
+/* ---------- หน้า search / item ---------- */
+
+/* การ์ดฟอร์มค้นหา ขอบบนสีพบของ */
+.search-card {
+  border-top: 5px solid #0E9AA7;
+}
+
+/* หัวข้อย่อย มีแถบสีของหายด้านซ้าย */
+.section-heading {
+  color: #0B7B85;
+  border-left: 5px solid #F25F5C;
+  padding-left: 0.75rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* ให้มุมโค้ง (rounded-4) ของตารางตัดมุมเซลล์ได้ */
+.table-rounded {
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+}
+
+/* เส้นคั่นแต่ละแถวของตารางเป็นสีเทา */
+.table-gray-line td {
+  border-bottom: 1px solid #adb5bd;
+}
+
+/* ประวัติการค้นหาแบบ chip */
+.history-chip {
+  transition: transform 0.2s;
+}
+
+.history-chip:hover {
+  transform: translateY(-2px);
+}
+
+/* กรอบรูปสิ่งของ พื้นพาสเทลสีพบของ */
+.item-photo {
+  background-color: #e3f4f6;
+  border-top: 5px solid #0E9AA7;
+}
+
+/* รายการข้อมูลในหน้า item */
+.item-info li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e4e7ec;
+}
+
+.item-info b {
+  color: #0B7B85;
+}
+
+@media (max-width: 768px) {
+  .item-photo img {
+    width: 100%;
+  }
 }
 
 /* บังคับรูปในตารางให้ขนาดเท่ากัน */

@@ -1,4 +1,4 @@
-<div id="returnUnitsMap" style="height: 420px; width: 100%;"></div>
+<div id="returnUnitsMap" class="rounded-4 shadow-sm mb-4" style="height: 420px; width: 100%;"></div>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>

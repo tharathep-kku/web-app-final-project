@@ -50,7 +50,7 @@
     </div>
     <div class="bg-white rounded-4 shadow-sm p-4 mb-4">
         <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
-            <span class="small fw-medium">ประเภท:</span>
+            <span class="small fw-medium">ประเภทการแจ้ง:</span>
             <a href="{{ route('home', request()->except(['type', 'page'])) }}" class="btn btn-sm rounded-pill {{ $type === '' ? 'btn-primary' : 'btn-outline-secondary' }}">ทั้งหมด</a>
             <a href="{{ route('home', array_merge(request()->except('page'), ['type' => 'found'])) }}" class="btn btn-sm rounded-pill {{ $type === 'found' ? 'btn-primary' : 'btn-outline-secondary' }}">พบของ</a>
             <a href="{{ route('home', array_merge(request()->except('page'), ['type' => 'lost'])) }}" class="btn btn-sm rounded-pill {{ $type === 'lost' ? 'btn-danger' : 'btn-outline-secondary' }}">ของหาย</a>

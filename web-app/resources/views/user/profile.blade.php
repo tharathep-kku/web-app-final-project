@@ -5,95 +5,59 @@
     <h2><strong>โปรไฟล์</strong></h2>
 
     @if (session('success'))
-        <p><strong>{{ session('success') }}</strong></p>
+        <p class="alert alert-success"><strong>{{ session('success') }}</strong></p>
     @endif
 
     @if (session('error'))
-        <p><strong>{{ session('error') }}</strong></p>
+        <p class="alert alert-danger"><strong>{{ session('error') }}</strong></p>
     @endif
 
     @if ($errors->any())
-        <h3>ข้อมูลไม่ถูกต้อง</h3>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+        <div class="alert alert-danger">
+            <h3 class="h6">ข้อมูลไม่ถูกต้อง</h3>
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     @endif
 
-    <h3>ข้อมูลส่วนตัว</h3>
-    <p>แก้ไขชื่อและอีเมลที่ใช้เข้าสู่ระบบ</p>
-    <form method="POST" action="{{ route('profile.update') }}">
+    <h3 class="section-heading">ข้อมูลส่วนตัว</h3>
+    <p class="text-secondary">แก้ไขชื่อและอีเมลที่ใช้เข้าสู่ระบบ</p>
+    <form class="search-card bg-white rounded-4 shadow-sm p-4 mb-4" method="POST" action="{{ route('profile.update') }}">
         @csrf
         @method('PUT')
 
-        <label for="name">ชื่อ:</label><br>
-        <input type="text" id="name" name="name" value="{{ old('name', $user->name) }}" required><br><br>
-        
-        <label for="email">อีเมล:</label><br>
-        <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}" required><br><br>
+        <div class="row g-3">
+            <div class="col-12 col-md-4">
+                <label for="name" class="form-label fw-semibold">ชื่อ:</label>
+                <input type="text" id="name" class="form-control" name="name" value="{{ old('name', $user->name) }}" required>
+            </div>
 
-        <label for="phone">เบอร์โทรศัพท์:</label><br>
-        <input type="tel" id="phone" name="phone" value="{{ old('phone', $user->phone) }}" maxlength="12" pattern="0[0-9]{2}-?[0-9]{3}-?[0-9]{4}" title="กรอกเบอร์โทร 10 หลัก ขึ้นต้นด้วย 0 เช่น 081-234-5678 หรือ 0812345678" required><br><br>
+            <div class="col-12 col-md-4">
+                <label for="email" class="form-label fw-semibold">อีเมล:</label>
+                <input type="email" id="email" class="form-control" name="email" value="{{ old('email', $user->email) }}" required>
+            </div>
 
-        <button type="submit">บันทึก</button>
+            <div class="col-12 col-md-4">
+                <label for="phone" class="form-label fw-semibold">เบอร์โทรศัพท์:</label>
+                <input type="tel" id="phone" class="form-control" name="phone" value="{{ old('phone', $user->phone) }}" maxlength="12" pattern="0[0-9]{2}-?[0-9]{3}-?[0-9]{4}" title="กรอกเบอร์โทร 10 หลัก ขึ้นต้นด้วย 0 เช่น 081-234-5678 หรือ 0812345678" required>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-pop px-4">บันทึก</button>
+            </div>
+        </div>
     </form>
 
         <hr>
 
-        <h3>โพสต์ของฉัน</h3>
-        <p>ดูและจัดการโพสต์แจ้งของหาย/พบของที่คุณเคยลงไว้ ใช้ตัวกรองด้านล่างเพื่อหารายการที่ต้องการให้เจอง่ายขึ้น</p>
+        <h3 class="section-heading">โพสต์ของฉัน</h3>
+        <p class="text-secondary">ดูและจัดการโพสต์แจ้งของหาย/พบของที่คุณเคยลงไว้</p>
 
-        <form method="GET" action="{{ route('profile.edit') }}">
-            <label for="type">ประเภท:</label>
-            <select id="type" name="type">
-                <option value="" {{ $type === '' ? 'selected' : '' }}>-- ทั้งหมด --</option>
-                <option value="found" {{ $type === 'found' ? 'selected' : '' }}>พบของ</option>
-                <option value="lost" {{ $type === 'lost' ? 'selected' : '' }}>ของหาย</option>
-            </select>
-
-            <label for="status">สถานะ:</label>
-            <select id="status" name="status">
-                <option value="" {{ $status === '' ? 'selected' : '' }}>-- ทั้งหมด --</option>
-                @foreach ($statuses as $st)
-                    <option value="{{ $st }}" {{ $status === $st ? 'selected' : '' }}>{{ $st }}</option>
-                @endforeach
-            </select>
-
-            <label for="category">หมวดหมู่:</label>
-            <select id="category" name="category">
-                <option value="" {{ $category === '' ? 'selected' : '' }}>-- ทั้งหมด --</option>
-                @foreach ($categories as $cat)
-                    <option value="{{ $cat->id }}" {{ (string) $category === (string) $cat->id ? 'selected' : '' }}>{{ $cat->name }}</option>
-                @endforeach
-            </select>
-            <br><br>
-
-            <label for="keyword">ชื่อสิ่งของ:</label>
-            <input type="text" id="keyword" name="keyword" value="{{ $keyword }}">
-
-            <label for="location">สถานที่:</label>
-            <input type="text" id="location" name="location" list="profileLocationList" value="{{ $location }}">
-            <datalist id="profileLocationList">
-                @foreach ($locations as $loc)
-                    <option value="{{ $loc }}">
-                @endforeach
-            </datalist>
-
-
-            <label for="start_date">ช่วงวันที่พบ/หาย ตั้งแต่:</label>
-            <input type="date" id="start_date" name="start_date" value="{{ $start_date }}">
-
-            <label for="end_date">ถึง:</label>
-            <input type="date" id="end_date" name="end_date" value="{{ $end_date }}">
-
-            <button type="submit">กรองข้อมูล</button>
-            <a href="{{ route('profile.edit') }}"><button type="button">ล้างตัวกรอง</button></a>
-        </form>
-
-        <br>
-
-        <table border="1" cellspacing="2" cellpadding="0">
+        <div class="table-responsive">
+        <table class="table table-hover table-white align-middle table-kku table-rounded rounded-4 table-gray-line border-0" border="1" cellspacing="2" cellpadding="0">
             <thead>
                 <tr>
                     <th>สิ่งของ</th>
@@ -127,14 +91,14 @@
                         <td>{{ $item->status }}</td>
                         <td>
                             @if ($item->canEdit())
-                                <form method="GET" action="{{ route('posts.edit', $item->id) }}">
-                                    <button>แก้ไข</button>
+                                <form class="mb-1" method="GET" action="{{ route('posts.edit', $item->id) }}">
+                                    <button class="btn btn-sm btn-outline-primary">แก้ไข</button>
                                 </form>
                                 <form method="POST" action="{{ route('posts.destroy', $item->id) }}"
                                     onsubmit="return confirm('ยืนยันการลบโพสต์นี้?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit">ลบ</button>
+                                    <button type="submit" class="btn btn-sm btn-danger">ลบ</button>
                                 </form>
                             @else
                                 -
@@ -143,15 +107,15 @@
                         <td>
                             @if ($item->canSubmitEvidence())
                                 @if ($item->status === 'หลักฐานไม่ถูกต้อง')
-                                    <small>หลักฐานเดิมไม่ผ่าน กรุณาส่งใหม่</small><br>
+                                    <small class="text-danger">หลักฐานเดิมไม่ผ่าน กรุณาส่งใหม่</small><br>
                                 @endif
                                 <form method="POST" action="{{ route('posts.evidence', $item->id) }}" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
-                                    <input type="file" name="evidence" accept="image/*" required><br>
-                                    <small>jpeg, png, gif, webp, avif ไม่เกิน 2 MB</small><br>
-                                    <input type="text" name="evidence_note" placeholder="หมายเหตุ เช่น ชื่อผู้รับคืน"><br>
-                                    <button type="submit">ยืนยัน</button>
+                                    <input type="file" class="form-control form-control-sm mb-1" name="evidence" accept="image/*" required>
+                                    <small class="d-block text-secondary mb-1">jpeg, png, gif, webp, avif ไม่เกิน 2 MB</small>
+                                    <input type="text" class="form-control form-control-sm mb-1" name="evidence_note" placeholder="หมายเหตุ เช่น ชื่อผู้รับคืน">
+                                    <button type="submit" class="btn btn-sm btn-primary">ยืนยัน</button>
                                 </form>
                             @elseif ($item->status === 'รอแอดมินยืนยัน')
                                 รอแอดมินตรวจหลักฐาน
@@ -167,40 +131,57 @@
                 @endforelse
             </tbody>
         </table>
-    
+        </div>
+
 
     <hr>
 
-    <h3>เปลี่ยนรหัสผ่าน</h3>
-    <p>ตั้งรหัสผ่านใหม่เพื่อความปลอดภัยของบัญชี</p>
-    <form method="POST" action="{{ route('profile.password') }}">
+    <h3 class="section-heading">เปลี่ยนรหัสผ่าน</h3>
+    <p class="text-secondary">ตั้งรหัสผ่านใหม่เพื่อความปลอดภัยของบัญชี</p>
+    <form class="search-card bg-white rounded-4 shadow-sm p-4 mb-4" method="POST" action="{{ route('profile.password') }}">
         @csrf
         @method('PUT')
 
-        <label for="current_password">รหัสผ่านปัจจุบัน:</label><br>
-        <input type="password" id="current_password" name="current_password" required><br><br>
+        <div class="row g-3">
+            <div class="col-12 col-md-4">
+                <label for="current_password" class="form-label fw-semibold">รหัสผ่านปัจจุบัน:</label>
+                <input type="password" id="current_password" class="form-control" name="current_password" required>
+            </div>
 
-        <label for="password">รหัสผ่านใหม่:</label><br>
-        <input type="password" id="password" name="password" placeholder="เช่น KkuReturn26" required><br>
-        <span style="color: red;">*<small>อย่างน้อย 8 ตัวอักษร ต้องมีพิมพ์ใหญ่ พิมพ์เล็ก และตัวเลข</small></span><br><br>
+            <div class="col-12 col-md-4">
+                <label for="password" class="form-label fw-semibold">รหัสผ่านใหม่:</label>
+                <input type="password" id="password" class="form-control" name="password" placeholder="เช่น KkuReturn26" required>
+                <span style="color: red;">*<small>อย่างน้อย 8 ตัวอักษร ต้องมีพิมพ์ใหญ่ พิมพ์เล็ก และตัวเลข</small></span>
+            </div>
 
-        <label for="password_confirmation">ยืนยันรหัสผ่านใหม่:</label><br>
-        <input type="password" id="password_confirmation" name="password_confirmation" required><br><br>
+            <div class="col-12 col-md-4">
+                <label for="password_confirmation" class="form-label fw-semibold">ยืนยันรหัสผ่านใหม่:</label>
+                <input type="password" id="password_confirmation" class="form-control" name="password_confirmation" required>
+            </div>
 
-        <button type="submit">เปลี่ยนรหัสผ่าน</button>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-pop px-4">เปลี่ยนรหัสผ่าน</button>
+            </div>
+        </div>
     </form>
 
     <hr>
 
-    <h3>ลบบัญชี</h3>
-    <p>เมื่อลบบัญชีแล้วจะกู้คืนไม่ได้ กรุณากรอกรหัสผ่านเพื่อยืนยัน</p>
-    <form method="POST" action="{{ route('profile.destroy') }}" onsubmit="return confirm('ยืนยันการลบบัญชี?')">
+    <h3 class="section-heading">ลบบัญชี</h3>
+    <p class="text-secondary">เมื่อลบบัญชีแล้วจะกู้คืนไม่ได้ กรุณากรอกรหัสผ่านเพื่อยืนยัน</p>
+    <form class="search-card bg-white rounded-4 shadow-sm p-4 mb-4" method="POST" action="{{ route('profile.destroy') }}" onsubmit="return confirm('ยืนยันการลบบัญชี?')">
         @csrf
         @method('DELETE')
 
-        <label for="delete_password">รหัสผ่าน:</label><br>
-        <input type="password" id="delete_password" name="delete_password" required><br><br>
+        <div class="row g-3">
+            <div class="col-12 col-md-4">
+                <label for="delete_password" class="form-label fw-semibold">รหัสผ่าน:</label>
+                <input type="password" id="delete_password" class="form-control" name="delete_password" required>
+            </div>
 
-        <button type="submit">ลบบัญชี</button>
+            <div class="col-12">
+                <button type="submit" class="btn btn-danger btn-pop">ลบบัญชี</button>
+            </div>
+        </div>
     </form>
 @endsection

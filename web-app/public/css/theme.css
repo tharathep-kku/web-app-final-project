@@ -53,6 +53,16 @@ h1, h2, h3 { font-family: 'Kanit', sans-serif; }
   --bs-btn-active-border-color: var(--b-found);
 }
 
+/* ปุ่มแบบมีแต่ขอบ สีของหาย */
+.btn-outline-danger {
+  --bs-btn-color: var(--b-lost);
+  --bs-btn-border-color: var(--b-lost);
+  --bs-btn-hover-bg: var(--b-lost);
+  --bs-btn-hover-border-color: var(--b-lost);
+  --bs-btn-active-bg: var(--b-lost);
+  --bs-btn-active-border-color: var(--b-lost);
+}
+
 /* แถบสีใต้เมนู */
 .rainbow-bar {
   height: 5px;
@@ -75,7 +85,10 @@ h1, h2, h3 { font-family: 'Kanit', sans-serif; }
   background: var(--b-found);
   color: #fff;
   border-bottom: 0;
+  table-layout: fixed;
   text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
   font-weight: 500;
 }
 
@@ -85,6 +98,7 @@ h1, h2, h3 { font-family: 'Kanit', sans-serif; }
 
 .table-white td { 
   background-color: #ffffff; 
+  overflow-wrap: break-word;
 }
 /* หัวข้อใหญ่แบบโลโก้ */
 .wordmark {

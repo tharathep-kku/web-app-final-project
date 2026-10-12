@@ -15,9 +15,12 @@
         <div class="row g-3">
             <div class="col-12 col-md-6">
                 <label for="type" class="form-label fw-semibold d-block">ประเภทการแจ้ง:</label>
-                <input type="radio" class="form-check-input me-1" name="type" value="" {{ $type === '' ? 'checked' : '' }}>ทั้งหมด
-                <input type="radio" class="form-check-input ms-3 me-1" name="type" value="found" {{ $type === 'found' ? 'checked' : '' }}>พบของ
-                <input type="radio" class="form-check-input ms-3 me-1" name="type" value="lost" {{ $type === 'lost' ? 'checked' : '' }}>ของหาย
+                <input type="radio" class="btn-check" id="type_all" name="type" value="" {{ $type === '' ? 'checked' : '' }}>
+                <label class="btn btn-sm rounded-pill btn-outline-primary" for="type_all">ทั้งหมด</label>
+                <input type="radio" class="btn-check" id="type_found" name="type" value="found" {{ $type === 'found' ? 'checked' : '' }}>
+                <label class="btn btn-sm rounded-pill btn-outline-primary" for="type_found">พบของ</label>
+                <input type="radio" class="btn-check" id="type_lost" name="type" value="lost" {{ $type === 'lost' ? 'checked' : '' }}>
+                <label class="btn btn-sm rounded-pill btn-outline-danger" for="type_lost">ของหาย</label>
             </div>
             
             <div class="col-12">
@@ -70,7 +73,7 @@
             </div>
         </div>
     </form>
-
+    <hr>
     <div id="loadingMessage" class="text-secondary mb-3" style="display: none;">
         <p>กำลังค้นหา กรุณารอสักครู่...</p>
     </div>
@@ -95,7 +98,7 @@
             @endforeach
         </ul>
     @endif
-
+    <hr>
     @if ($searched)
     <h3 class="section-heading"><strong>ผลการค้นหา:</strong></h3>
     <div id="resultsContainer" class="table-responsive">

@@ -29,7 +29,7 @@
                     <a class="btn btn-outline-secondary btn-sm" href="{{ route('login') }}">เข้าสู่ระบบ</a>
                 @endguest
                 @auth
-                    <a class="nav-link" href="{{ route('profile.edit') }}">{{ auth()->user()->name }}</a>
+                    <a class="btn btn-danger btn-pop btn-sm" href="{{ route('profile.edit') }}">{{ auth()->user()->name }}</a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="btn btn-outline-secondary btn-sm">ออกจากระบบ</button>

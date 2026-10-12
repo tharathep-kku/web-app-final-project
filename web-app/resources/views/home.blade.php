@@ -2,10 +2,6 @@
 
 @section('title', 'หน้าแรก')
 
-@section('intro')
-    @include('partials.intro')
-@endsection
-
 @section('content')
     <div class="row align-items-center g-4 mb-4">
         <div class="col-lg-7">

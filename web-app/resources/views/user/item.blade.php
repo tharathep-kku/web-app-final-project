@@ -2,10 +2,6 @@
 
 @section('title', $item->title)
 
-@section('intro')
-    @include('partials.intro')
-@endsection
-
 @section('content')
 
     <h2><strong>รายละเอียด</strong></h2>

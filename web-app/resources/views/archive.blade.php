@@ -5,13 +5,13 @@
 @section('note', '*หมายเหตุ: ประกาศในคลังยังไม่ถูกลบออกจากระบบ เก็บไว้เพื่อให้ตรวจสอบย้อนหลังได้')
 
 @section('content')
-    <h2><strong>รายการที่เก็บเข้าคลังแล้ว</strong></h2>
+    <h2 class="section-heading"><strong>รายการที่เก็บเข้าคลังแล้ว</strong></h2>
     <p>คลังประกาศของคืน: ของที่ได้รับคืนเจ้าของไปแล้วเกิน 7 วัน จะถูกเก็บไว้ที่นี่</p>
 
     <p>พบ {{ $items->total() }} รายการ</p>
 
     <div class="table-responsive">
-    <table class="table table-hover align-middle table-kku">
+    <table class="table table-hover table-white align-middle table-kku table-rounded rounded-4 table-gray-line border-0">
         <thead>
             <tr>
                 <th>สิ่งของ</th>
@@ -63,5 +63,5 @@
     </div>
 
     <br>
-        <p><a href="{{ route('home') }}"><button type="button" class="btn btn-outline-primary">กลับหน้าแรก</button></a></p>
+        <p><a href="{{ route('home') }}"><button type="button" class="btn btn-danger">กลับหน้าแรก</button></a></p>
 @endsection

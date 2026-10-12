@@ -5,10 +5,10 @@
 @section('content')
     <div class="row align-items-center g-4 mb-4">
         <div class="col-lg-7">
-            <h2 class="fw-bold mb-2">ศูนย์รวมแจ้งของหาย – พบของ ม.ขอนแก่น</h2>
+            <h2 class="fw-bold section-heading">ศูนย์รวมแจ้งของหาย – พบของ ม.ขอนแก่น</h2>
             <p class="text-secondary">ปลอดภัย ตรวจสอบได้ มีหลักฐานยืนยันการส่งมอบทุกครั้ง</p>
 
-            <form method="GET" action="{{ route('search.home') }}" class="d-flex gap-2 mb-3">
+            <form method="GET" action="{{ route('search.home') }}" class="d-flex bg-white rounded-4 shadow-sm gap-2 p-4 mb-4">
                 <input type="hidden" name="searched" value="1">
                 <input type="text" name="item_name" class="form-control rounded-pill"
                        placeholder="เช่น กระเป๋าตังค์สีน้ำตาล">
@@ -19,7 +19,7 @@
             <a href="{{ route('posts.create') }}" class="btn btn-primary btn-pop">ฉันเก็บของได้</a>
         </div>
 
-        <div class="col-lg-5">
+        <div class="col-lg-5 bg-white rounded-4 shadow-sm gap-2  p-4 mb-4"">
             <div class="row g-2 text-center">
                 <div class="col-6">
                     <div class="p-3 rounded-4" style="background:rgba(66,141,255,.15);">
@@ -48,34 +48,35 @@
             </div>
         </div>
     </div>
-    <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
-        <span class="text-secondary small">ประเภท:</span>
-        <a href="{{ route('home') }}" class="btn btn-sm rounded-pill {{ $type === '' ? 'btn-primary' : 'btn-outline-secondary' }}">ทั้งหมด</a>
-        <a href="{{ route('home', ['type' => 'found']) }}" class="btn btn-sm rounded-pill {{ $type === 'found' ? 'btn-primary' : 'btn-outline-secondary' }}">พบของ</a>
-        <a href="{{ route('home', ['type' => 'lost']) }}" class="btn btn-sm rounded-pill {{ $type === 'lost' ? 'btn-danger' : 'btn-outline-secondary' }}">ของหาย</a>
+    <div class="bg-white rounded-4 shadow-sm p-4 mb-4">
+        <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
+            <span class="small fw-medium">ประเภท:</span>
+            <a href="{{ route('home', request()->except(['type', 'page'])) }}" class="btn btn-sm rounded-pill {{ $type === '' ? 'btn-primary' : 'btn-outline-secondary' }}">ทั้งหมด</a>
+            <a href="{{ route('home', array_merge(request()->except('page'), ['type' => 'found'])) }}" class="btn btn-sm rounded-pill {{ $type === 'found' ? 'btn-primary' : 'btn-outline-secondary' }}">พบของ</a>
+            <a href="{{ route('home', array_merge(request()->except('page'), ['type' => 'lost'])) }}" class="btn btn-sm rounded-pill {{ $type === 'lost' ? 'btn-danger' : 'btn-outline-secondary' }}">ของหาย</a>
+        </div>
+
+        @php
+            $d7 = date('Y-m-d', strtotime('-7 days'));
+            $d30 = date('Y-m-d', strtotime('-30 days'));
+            $d3m = date('Y-m-d', strtotime('-3 months'));
+            $today = date('Y-m-d');
+        @endphp
+
+        <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
+            <span class="small fw-medium">ช่วงเวลา:</span>
+            <a href="{{ route('home', request()->except(['from', 'to', 'page'])) }}" class="btn btn-sm rounded-pill {{ $from === '' ? 'btn-primary' : 'btn-outline-secondary' }}">ทั้งหมด</a>
+            <a href="{{ route('home', array_merge(request()->except('page'), ['from' => $d7, 'to' => $today])) }}" class="btn btn-sm rounded-pill {{ $from === $d7 ? 'btn-primary' : 'btn-outline-secondary' }}">7 วันล่าสุด</a>
+            <a href="{{ route('home', array_merge(request()->except('page'), ['from' => $d30, 'to' => $today])) }}" class="btn btn-sm rounded-pill {{ $from === $d30 ? 'btn-primary' : 'btn-outline-secondary' }}">30 วันล่าสุด</a>
+            <a href="{{ route('home', array_merge(request()->except('page'), ['from' => $d3m, 'to' => $today])) }}" class="btn btn-sm rounded-pill {{ $from === $d3m ? 'btn-primary' : 'btn-outline-secondary' }}">3 เดือนล่าสุด</a>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2 align-items-center mb-0">
+            <span class="small fw-medium">เรียงตาม:</span>
+            <a href="{{ route('home', array_merge(request()->query(), ['sort' => 'new', 'page' => 1])) }}" class="btn btn-sm rounded-pill {{ $sort !== 'old' ? 'btn-primary' : 'btn-outline-secondary' }}">ใหม่สุด</a>
+            <a href="{{ route('home', array_merge(request()->query(), ['sort' => 'old', 'page' => 1])) }}" class="btn btn-sm rounded-pill {{ $sort === 'old' ? 'btn-primary' : 'btn-outline-secondary' }}">เก่าสุด</a>
+        </div>
     </div>
-
-    @php
-        $d7 = date('Y-m-d', strtotime('-7 days'));
-        $d30 = date('Y-m-d', strtotime('-30 days'));
-        $d3m = date('Y-m-d', strtotime('-3 months'));
-        $today = date('Y-m-d');
-    @endphp
-
-    <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
-        <span class="text-secondary small">ช่วงเวลา:</span>
-        <a href="{{ route('home') }}" class="btn btn-sm rounded-pill {{ $from === '' ? 'btn-primary' : 'btn-outline-secondary' }}">ทั้งหมด</a>
-        <a href="{{ route('home', ['from' => $d7, 'to' => $today]) }}" class="btn btn-sm rounded-pill {{ $from === $d7 ? 'btn-primary' : 'btn-outline-secondary' }}">7 วันล่าสุด</a>
-        <a href="{{ route('home', ['from' => $d30, 'to' => $today]) }}" class="btn btn-sm rounded-pill {{ $from === $d30 ? 'btn-primary' : 'btn-outline-secondary' }}">30 วันล่าสุด</a>
-        <a href="{{ route('home', ['from' => $d3m, 'to' => $today]) }}" class="btn btn-sm rounded-pill {{ $from === $d3m ? 'btn-primary' : 'btn-outline-secondary' }}">3 เดือนล่าสุด</a>
-    </div>
-
-    <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
-        <span class="text-secondary small">เรียงตาม:</span>
-        <a href="{{ route('home', array_merge(request()->query(), ['sort' => 'new', 'page' => 1])) }}" class="btn btn-sm rounded-pill {{ $sort !== 'old' ? 'btn-primary' : 'btn-outline-secondary' }}">ใหม่สุด</a>
-        <a href="{{ route('home', array_merge(request()->query(), ['sort' => 'old', 'page' => 1])) }}" class="btn btn-sm rounded-pill {{ $sort === 'old' ? 'btn-primary' : 'btn-outline-secondary' }}">เก่าสุด</a>
-    </div>
-
     <!-- ---------- จำนวนผลลัพธ์ ---------- -->
     <p aria-live="polite">
         พบ {{ $items->total() }} รายการที่ยังไม่เข้าคลัง
@@ -89,7 +90,7 @@
     </p>
 
     <div class="table-responsive">
-    <table class="table table-hover align-middle table-kku">
+    <table class="table table-hover table-white align-middle table-kku table-rounded rounded-4 table-gray-line border-0">
         <thead>
             <tr>
                 <th>สิ่งของ</th>
@@ -140,10 +141,11 @@
     <div>
         {{ $items->links('partials.pagination') }}
     </div>
-
-    <p><a href="{{ route('archive.home') }}">ดูรายการที่เก็บเข้าคลังแล้ว</a></p>
+    <br>
+    <p><a href="{{ route('archive.home') }}" class="btn btn-primary btn-pop">ดูรายการที่เก็บเข้าคลังแล้ว</a></p>
     <hr>
 
+    <h2 class="section-heading"><strong>แจ้งของหาย / แจ้งพบของ</strong></h2>
     <p>
         ไม่เจอของที่คุณตามหาใช่ไหม? ลงประกาศไว้ เผื่อมีคนเก็บได้แล้วนำมาคืน
         <br>
@@ -152,8 +154,10 @@
 
     <hr>
 
-    <h2><strong>จุดรับ-ส่งคืนของ</strong></h2>
+    <h2 class="section-heading"><strong>จุดรับ-ส่งคืนของ</strong></h2>
     <p>นำของที่เก็บได้ไปฝาก หรือไปรับของคืนได้ที่จุดเหล่านี้</p>
     @include('partials.return-units')
+    <br>
+    <a href="{{ route('location') }}"><button type="button" class="btn btn-primary btn-pop">จุดรับ-ส่งคืนของ</button></a>
 
 @endsection

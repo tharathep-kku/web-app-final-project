@@ -22,7 +22,7 @@
             </ul>
         </div>
     @endif
-
+    <hr>
     <h3 class="section-heading">ข้อมูลส่วนตัว</h3>
     <p class="text-secondary">แก้ไขชื่อและอีเมลที่ใช้เข้าสู่ระบบ</p>
     <form class="search-card bg-white rounded-4 shadow-sm p-4 mb-4" method="POST" action="{{ route('profile.update') }}">

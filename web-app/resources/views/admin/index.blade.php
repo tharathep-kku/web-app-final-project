@@ -5,6 +5,7 @@
 @section('note', '*หมายเหตุ: การอนุมัติจะบันทึกชื่อแอดมินและเวลาที่ตรวจสอบไว้ทุกครั้ง เพื่อให้ตรวจสอบย้อนหลังได้')
 
 @section('content')
+    <h2><strong>แอดมิน</strong></h2>
     <p class="text-secondary">ส่วนของแอดมิน สำหรับอนุมัติโพสต์และดูข้อมูลหลังบ้านทั้งหมด</p>
 
     {{-- ข้อความแจ้งผลหลังกดปุ่ม --}}
@@ -36,11 +37,11 @@
     <hr>
 
     @if ($admin)
-        <h2><strong>รายการรอยืนยันการส่งมอบ</strong></h2>
+        <h2 class="section-heading"><strong>รายการรอยืนยันการส่งมอบ</strong></h2>
         <p class="text-danger">*รายการที่มีผู้แจ้งว่าส่งมอบของแล้ว รอแอดมินตรวจสอบหลักฐาน</p>
 
         <div class="table-responsive">
-        <table class="table table-hover align-middle table-kku">
+        <table class="table table-hover table-white align-middle table-kku table-rounded rounded-4 table-gray-line border-0">
             <thead>
                 <tr>
                     <th>รหัส</th>
@@ -103,11 +104,11 @@
         <br>
         <hr>
 
-        <h2><strong>ฐานข้อมูลผู้ใช้งาน</strong></h2>
+        <h2 class="section-heading"><strong>ฐานข้อมูลผู้ใช้งาน</strong></h2>
         <p class="text-danger">* ข้อมูลส่วนบุคคล (เปิดเผยเฉพาะแอดมิน)</p>
 
         <div class="table-responsive">
-        <table class="table table-hover align-middle table-kku">
+        <table class="table table-hover table-white align-middle table-kku table-rounded rounded-4 table-gray-line border-0">
             <thead>
                 <tr>
                     <th>User ID</th>
@@ -160,10 +161,10 @@
         <br>
         <hr>
 
-        <h2><strong>โพสต์ทั้งหมด</strong></h2>
+        <h2 class="section-heading"><strong>โพสต์ทั้งหมด</strong></h2>
 
         {{-- ฟอร์มกรองอยู่ในการ์ด จัดช่องเป็น 3 คอลัมน์ (มือถือเหลือคอลัมน์เดียว) --}}
-        <form method="GET" action="{{ route('admin.index') }}" class="card card-body border-0 shadow-sm mb-3">
+        <form method="GET" action="{{ route('admin.index') }}" class="card card-body bg-white table-rounded rounded-4 border-0 shadow-sm mb-3">
             <div class="row g-3">
                 <div class="col-12 col-md-4">
                     <label for="type" class="form-label">ประเภท:</label>
@@ -233,7 +234,7 @@
         </form>
 
         <div class="table-responsive">
-        <table class="table table-hover align-middle table-kku">
+        <table class="table table-hover table-white align-middle table-kku table-rounded rounded-4 table-gray-line border-0">
             <thead>
                 <tr>
                     <th>รหัส</th>

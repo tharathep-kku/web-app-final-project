@@ -8,25 +8,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Item extends Model
 {
-    /**
-     * @return BelongsTo<Category, $this>
-     */
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    /**
-     * @return BelongsTo<User, $this>
-     */
     public function reporter(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    /**
-     * @return BelongsTo<ReturnUnit, $this>
-     */
     public function returnUnit(): BelongsTo
     {
         return $this->belongsTo(ReturnUnit::class);

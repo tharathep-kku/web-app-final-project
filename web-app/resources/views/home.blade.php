@@ -88,8 +88,8 @@
         <button type="submit" class="btn btn-danger btn-pop px-4">กรองของหาย</button>
     </form>
     <!-- ---------- จำนวนผลลัพธ์ ---------- -->
-    <p aria-live="polite">
-        พบ {{ $items->total() }} รายการที่ยังไม่เข้าคลัง
+    <p aria-live="polite" >
+        พบ <strong>{{ $items->total() }}</strong> รายการที่ยังไม่เข้าคลัง
         @if ($from !== '' || $to !== '')
             ระหว่าง
             {{ $from !== '' ? date('d/m/Y', strtotime($from)) : 'เริ่มต้น' }}

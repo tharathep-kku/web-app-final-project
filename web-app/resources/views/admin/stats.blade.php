@@ -5,12 +5,13 @@
 @section('note', '*หมายเหตุ: ตัวเลขทั้งหมดคำนวณจากข้อมูลในฐานข้อมูล ณ เวลาที่เปิดหน้านี้')
 
 @section('content')
+    <h2><strong>สถิติ</strong></h2>
     <p class="text-secondary">สถิติของระบบ (ดูโดย {{ $admin->name }})</p>
-
-    <h2><strong>ภาพรวม</strong></h2>
+    <hr>
+    <h2 class="section-heading"><strong>ภาพรวม</strong></h2>
 
     {{-- กล่องตัวเลข ใช้สีเดียวกับกล่องสถิติในหน้าแรก --}}
-    <div class="row g-2 text-center mb-3">
+    <div class="row bg-white rounded-4 shadow-sm p-4 g-2 text-center mb-3">
         <div class="col-6 col-md-4 col-lg">
             <div class="p-3 rounded-4" style="background:rgba(66,141,255,.15);">
                 <div class="fs-3 fw-bold" style="font-family:'Baloo 2',sans-serif;">{{ $total_item }}</div>
@@ -43,7 +44,7 @@
         </div>
     </div>
 
-    <div class="card card-body border-0 shadow-sm mb-4">
+    <div class="card card-body bg-white rounded-4 border-0 shadow-sm mb-4">
         <ul class="mb-0">
             <li>ประกาศพบของ {{ $found_item }} รายการ / ประกาศของหาย {{ $lost_item }} รายการ</li>
             <li>
@@ -56,14 +57,14 @@
             <li>ช่วงวันที่ของข้อมูล {{ $first_date ? $first_date : '-' }} ถึง {{ $last_date ? $last_date : '-' }}</li>
         </ul>
     </div>
-
+    <hr>
     {{-- ตารางหมวดหมู่กับสถานที่วางคู่กันบนจอใหญ่ --}}
     <div class="row g-4">
         <div class="col-12 col-lg-6">
-            <h2><strong>สถิติแยกตามหมวดหมู่</strong></h2>
+            <h2 class="section-heading"><strong>สถิติแยกตามหมวดหมู่</strong></h2>
 
             <div class="table-responsive">
-            <table class="table table-hover align-middle table-kku">
+            <table class="table table-hover table-white align-middle table-kku table-rounded rounded-4 table-gray-line border-0">
                 <thead>
                     <tr>
                         <th>หมวดหมู่</th>
@@ -85,10 +86,10 @@
         </div>
 
         <div class="col-12 col-lg-6">
-            <h2><strong>สถิติแยกตามสถานที่</strong></h2>
+            <h2 class="section-heading"><strong>สถิติแยกตามสถานที่</strong></h2>
 
             <div class="table-responsive">
-            <table class="table table-hover align-middle table-kku">
+            <table class="table table-hover table-white align-middle table-kku table-rounded rounded-4 table-gray-line border-0">
                 <thead>
                     <tr>
                         <th>สถานที่</th>
@@ -111,8 +112,8 @@
             </div>
         </div>
     </div>
-
-    <h2 class="mt-3"><strong>ผู้ใช้งานในระบบ</strong></h2>
+    <hr>
+    <h2 class="mt-3 section-heading""><strong>ผู้ใช้งานในระบบ</strong></h2>
 
     {{-- กล่องผู้ใช้เป็นพื้นขาว แยกจากกล่องสถิติของโพสต์ด้านบน --}}
     <div class="row g-2 text-center mb-3">

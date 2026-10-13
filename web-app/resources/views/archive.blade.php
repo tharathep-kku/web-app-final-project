@@ -6,9 +6,9 @@
 
 @section('content')
     <h2><strong>รายการที่เก็บเข้าคลังแล้ว</strong></h2>
-    <p>คลังประกาศของคืน: ของที่ได้รับคืนเจ้าของไปแล้วเกิน 7 วัน จะถูกเก็บไว้ที่นี่</p>
+    <p class="text-secondary">คลังประกาศของคืน: ของที่ได้รับคืนเจ้าของไปแล้วเกิน 7 วัน จะถูกเก็บไว้ที่นี่</p>
 
-    <p>พบ {{ $items->total() }} รายการ</p>
+    <p>พบ <strong>{{ $items->total() }}</strong> รายการ</p>
 
     <div class="table-responsive">
     <table class="table table-hover table-white align-middle table-kku table-rounded rounded-4 table-gray-line border-0">

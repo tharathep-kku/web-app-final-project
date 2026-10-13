@@ -6,7 +6,7 @@
 
     <h2><strong>ค้นหาของหาย</strong></h2>
 
-    <p>พิมพ์ชื่อสิ่งของ สถานที่ หรือรายละเอียดที่จำได้ เพื่อตามหาของของคุณ</p>
+    <p class="text-secondary">พิมพ์ชื่อสิ่งของ สถานที่ หรือรายละเอียดที่จำได้ เพื่อตามหาของของคุณ</p>
 
     <form id="searchForm" class="search-card bg-white rounded-4 shadow-sm p-4 mb-4" method="GET" action="{{ route('search.home') }}" onsubmit="document.getElementById('loadingMessage').style.display='block'; document.getElementById('searchBtn').disabled=true;">
 

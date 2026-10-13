@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
-    /**
-     * @return HasMany<Item, $this>
-     */
     public function items(): HasMany
     {
         return $this->hasMany(Item::class);

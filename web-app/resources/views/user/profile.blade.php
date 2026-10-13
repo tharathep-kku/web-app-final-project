@@ -42,7 +42,7 @@
 
             <div class="col-12 col-md-4">
                 <label for="phone" class="form-label fw-semibold">เบอร์โทรศัพท์:</label>
-                <input type="tel" id="phone" class="form-control" name="phone" value="{{ old('phone', $user->phone) }}" maxlength="12" pattern="0[0-9]{2}-?[0-9]{3}-?[0-9]{4}" title="กรอกเบอร์โทร 10 หลัก ขึ้นต้นด้วย 0 เช่น 081-234-5678 หรือ 0812345678" required>
+                <input type="tel" id="phone" class="form-control" name="phone" value="{{ old('phone', $user->phone) }}" maxlength="12" pattern="0[0-9]{2}-[0-9]{3}-[0-9]{4}" title="กรอกเบอร์โทร เช่น 081-234-5678" required>
             </div>
 
             <div class="col-12">

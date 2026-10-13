@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Concerns\PasswordValidationRules;
-use App\Concerns\ProfileValidationRules;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\View\View;
 use App\Models\Item;
 
 class ProfileController extends Controller
 {
-    use PasswordValidationRules, ProfileValidationRules;
-
     public function edit(Request $request): View
     {
         $user = $request->user();
@@ -30,7 +27,16 @@ class ProfileController extends Controller
     {
         $user = $request->user();
 
-        $user->update($request->validate($this->profileRules($user->id), $this->profileMessages()));
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'min:2', 'max:100'],
+            // unique:users,email,{id} = ห้ามซ้ำกับบัญชีอื่น แต่ใช้อีเมลเดิมของตัวเองได้
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
+            'phone' => ['required', 'string', 'max:12', 'regex:/^0[0-9]{2}-[0-9]{3}-[0-9]{4}$/'],
+        ], [
+            'phone.regex' => 'กรุณากรอกเบอร์โทรแบบมีขีด ขึ้นต้นด้วย 0 เช่น 081-234-5678',
+        ]);
+
+        $user->update($validated);
 
         return back()->with('success', 'บันทึกข้อมูลโปรไฟล์แล้ว');
     }
@@ -38,8 +44,8 @@ class ProfileController extends Controller
     public function updatePassword(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'current_password' => $this->currentPasswordRules(),
-            'password' => $this->passwordRules(),
+            'current_password' => ['required', 'string', 'current_password'],
+            'password' => ['required', 'string', Password::min(8)->mixedCase()->numbers(), 'confirmed'],
         ]);
 
         $request->user()->update(['password' => $validated['password']]);

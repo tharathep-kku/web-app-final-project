@@ -96,7 +96,6 @@ class AdminController extends Controller
         ));
     }
 
-    // ใส่เงื่อนไข where ให้ query ของตารางโพสต์ทั้งหมด ตามช่องที่แอดมินกรอกจริง (ไม่ใช่ค่าว่าง)
     private function filter($query, Request $request)
     {
         $keyword = trim($request->input('keyword') ?? '');

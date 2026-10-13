@@ -211,7 +211,7 @@ class ItemController extends Controller
         return view('user.create', compact('categories', 'locations', 'returnUnits'));
     }
 
-        public function store(Request $request)
+    public function store(Request $request)
     {
             
         foreach (['image' => 'รูปสิ่งของ', 'depositImage' => 'รูปตอนฝากของ'] as $field => $label) {

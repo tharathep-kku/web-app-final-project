@@ -156,16 +156,12 @@
     <hr>
 
     <h2 class="section-heading"><strong>แจ้งของหาย / แจ้งพบของ</strong></h2>
-    <p>
-        ไม่เจอของที่คุณตามหาใช่ไหม? ลงประกาศไว้ เผื่อมีคนเก็บได้แล้วนำมาคืน
-        <br>
-        <a href="{{ route('posts.create') }}"><button type="button" class="btn btn-primary btn-pop">แจ้งของหาย / แจ้งพบของ</button></a>
-    </p>
-
+    <p class="text-secondary">ไม่เจอของที่คุณตามหาใช่ไหม? ลงประกาศไว้ เผื่อมีคนเก็บได้แล้วนำมาคืน</p>
+    <a href="{{ route('posts.create') }}"><button type="button" class="btn btn-primary btn-pop">แจ้งของหาย / แจ้งพบของ</button></a>
     <hr>
 
     <h2 class="section-heading"><strong>จุดรับ-ส่งคืนของ</strong></h2>
-    <p>นำของที่เก็บได้ไปฝาก หรือไปรับของคืนได้ที่จุดเหล่านี้</p>
+    <p class="text-secondary">นำของที่เก็บได้ไปฝาก หรือไปรับของคืนได้ที่จุดเหล่านี้</p>
     @include('partials.return-units')
     <br>
     <a href="{{ route('location') }}"><button type="button" class="btn btn-primary btn-pop">จุดรับ-ส่งคืนของ</button></a>

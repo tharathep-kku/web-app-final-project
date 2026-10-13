@@ -19,7 +19,7 @@
             <a href="{{ route('posts.create') }}" class="btn btn-primary btn-pop">ฉันเก็บของได้</a>
         </div>
 
-        <div class="col-lg-5 bg-white rounded-4 shadow-sm gap-2  p-4 mb-4"">
+        <div class="col-lg-5 bg-white rounded-4 shadow-sm gap-2  p-4 mb-4">
             <div class="row g-2 text-center">
                 <div class="col-6">
                     <div class="p-3 rounded-4" style="background:rgba(66,141,255,.15);">

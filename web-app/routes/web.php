@@ -16,8 +16,6 @@ Route::middleware('auth')->get('/items/{id}', [ItemController::class, 'show'])->
 Route::get('/return-units/{returnUnit}', [ReturnUnitController::class, 'show'])->name('return-units.show');
 Route::get('location', [ReturnUnitController::class, 'index'])->name('location');
 
-
-# เพิ่มใหม่
 Route::middleware('auth')->group(function () {
     Route::get('/posts/{id}/edit', [UserPostController::class, 'edit'])->whereNumber('id')->name('posts.edit');
     Route::put('/posts/{id}', [UserPostController::class, 'update'])->whereNumber('id')->name('posts.update');
@@ -27,7 +25,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/posts/create', [ItemController::class, 'create'])->name('posts.create');
     });
 
-// ส่วนของ User แอดมิน: ต้องล็อกอินด้วยบัญชี role admin เท่านั้น
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/stats', [AdminController::class, 'stats'])->name('admin.stats');

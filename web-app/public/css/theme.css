@@ -132,8 +132,6 @@ button:not([class]) {
   font-family: inherit;
 }
 
-/* ---------- หน้า search / item ---------- */
-
 /* การ์ดฟอร์มค้นหา ขอบบนสีพบของ */
 .search-card {
   border-top: 5px solid #0E9AA7;

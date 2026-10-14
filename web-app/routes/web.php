@@ -9,7 +9,7 @@ use App\Http\Controllers\AdminController;
 Route::get('/', [ItemController::class, 'home'])->name('home');
 Route::get('/archive', [ItemController::class, 'archive'])->name('archive.home');
 
-Route::get('/search', [ItemController::class, 'search'])->name('search.home');
+Route::get('/search', [ItemController::class, 'search'])->name('search');
 Route::delete('/search/history', [ItemController::class, 'clearHistory'])->name('search.history.clear');
 Route::delete('/search/history/{index}', [ItemController::class, 'clearHistoryItem'])->whereNumber('index')->name('search.history.clear-one');
 Route::middleware('auth')->get('/items/{id}', [ItemController::class, 'show'])->name('item.show');

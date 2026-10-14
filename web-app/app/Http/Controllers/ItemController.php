@@ -68,7 +68,7 @@ class ItemController extends Controller
         return view('home', compact('items', 'from', 'to', 'type', 'sort', 'returnUnits', 'returnUnitsForMap', 'totalItem', 'waitingOwner', 'returnedItem', 'waitingConfirm'));
     }
 
-    // คลังประกาศ: ของที่คืนเจ้าของไปแล้วเกิน 6 เดือน
+    // คลังประกาศ: ของที่คืนเจ้าของไปแล้วเกิน 7 วัน
     public function archive(): View
     {
         $sevenDaysAgo = date('Y-m-d', strtotime('-' . self::ARCHIVE_DAYS . ' days'));
@@ -177,7 +177,7 @@ class ItemController extends Controller
     public function clearHistory(): RedirectResponse
     {
         session()->forget('search_history');
-        return redirect()->route('search.home');
+        return redirect()->route('search');
     }
 
     public function clearHistoryItem(int $index): RedirectResponse
@@ -186,7 +186,7 @@ class ItemController extends Controller
         unset($history[$index]);
         session(['search_history' => array_values($history)]);
 
-        return redirect()->route('search.home');
+        return redirect()->route('search');
     }
 
     public function show($id): View

@@ -46,7 +46,7 @@ class AdminController extends Controller
         if ($admin !== null) {
             $handovers = Item::with('reporter')
             ->where('status', 'รอแอดมินยืนยัน')
-            ->orderBy('id', 'DESC')
+            ->orderBy('id', 'desc')
             ->get();
 
             // ponytail: ไม่แบ่งหน้า ถ้าผู้ใช้เยอะค่อยเปลี่ยนเป็น paginate()
@@ -61,16 +61,10 @@ class AdminController extends Controller
                 $query->whereIn('user_id', $ownerIds);
             }
 
-            $items = $query->orderBy('id', 'DESC')->paginate(10)->withQueryString();
-
-            foreach ($items as $item) {
-                $itemCategory = Category::find($item->category_id);
-                $item->category_name = $itemCategory ? $itemCategory->name : 'อื่นๆ';
-
-                $owner = User::find($item->user_id);
-                $item->owner_name = $owner ? $owner->name : 'ไม่ทราบชื่อ';
-                $item->owner_role = $owner ? $owner->role : '-';
-            }
+            $items = $query->with(['category', 'reporter'])
+                ->orderBy('id', 'desc')
+                ->paginate(10)
+                ->withQueryString();
 
             $categories = Category::all();
             $locations = Item::select('location')->distinct()->orderBy('location')->pluck('location');

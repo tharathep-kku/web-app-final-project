@@ -8,7 +8,7 @@
 
     <p class="text-secondary">พิมพ์ชื่อสิ่งของ สถานที่ หรือรายละเอียดที่จำได้ เพื่อตามหาของของคุณ</p>
 
-    <form id="searchForm" class="search-card bg-white rounded-4 shadow-sm p-4 mb-4" method="GET" action="{{ route('search.home') }}" onsubmit="document.getElementById('loadingMessage').style.display='block'; document.getElementById('searchBtn').disabled=true;">
+    <form id="searchForm" class="search-card bg-white rounded-4 shadow-sm p-4 mb-4" method="GET" action="{{ route('search') }}" onsubmit="document.getElementById('loadingMessage').style.display='block'; document.getElementById('searchBtn').disabled=true;">
 
         <input type="hidden" name="searched" value="1">
 
@@ -69,7 +69,7 @@
 
             <div class="col-12">
                 <button type="submit" id="searchBtn" class="btn btn-primary btn-pop px-4">ค้นหา</button>
-                <a href="{{ route('search.home') }}"><button type="button" class="btn btn-danger btn-pop">ล้างคำค้นหา</button></a>
+                <a href="{{ route('search') }}"><button type="button" class="btn btn-danger btn-pop">ล้างคำค้นหา</button></a>
             </div>
         </div>
     </form>

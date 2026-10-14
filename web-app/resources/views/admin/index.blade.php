@@ -162,8 +162,6 @@
         <hr>
 
         <h2 class="section-heading"><strong>โพสต์ทั้งหมด</strong></h2>
-
-        {{-- ฟอร์มกรองอยู่ในการ์ด จัดช่องเป็น 3 คอลัมน์ (มือถือเหลือคอลัมน์เดียว) --}}
         <form method="GET" action="{{ route('admin.index') }}" class="card card-body bg-white table-rounded rounded-4 border-0 shadow-sm mb-3">
             <div class="row g-3">
                 <div class="col-12 col-md-4">
@@ -262,8 +260,8 @@
                                 <span class="badge rounded-pill text-bg-danger">ของหาย</span>
                             @endif
                         </td>
-                        <td>{{ $item->category_name }}</td>
-                        <td>{{ $item->owner_name }}</td>
+                        <td>{{ $item->category?->name ?? 'อื่นๆ' }}</td>
+                        <td>{{ $item->user?->name ?? 'ไม่ทราบชื่อ' }}</td>
                         <td class="text-start">{{ $item->location }}</td>
                         <td>{{ $item->event_date }}</td>
                         <td>

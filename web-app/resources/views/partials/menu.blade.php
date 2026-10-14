@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="mainNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">หน้าแรก</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('search.home') }}">ค้นหา</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('search') }}">ค้นหา</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('location') }}">จุดรับ-ส่งคืนของ</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('archive.home') }}">คลัง</a></li>
                 @auth

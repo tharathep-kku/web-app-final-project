@@ -60,6 +60,6 @@
     @endif
 
     <br><br>
-    <a href="{{ route('home') }}"><button type="button" class="btn btn-outline-secondary btn-pop">กลับไปหน้าแรก</button></a>
+    <p><a href="{{ route('home') }}"><button type="button" class="btn btn-danger">กลับหน้าแรก</button></a></p>
 
 @endsection

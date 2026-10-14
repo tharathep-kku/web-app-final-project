@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Category;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -189,8 +190,20 @@ class AdminController extends Controller
             return redirect()->back()->with('error', 'รายการ ' . $item->title . ' ไม่ได้อยู่ในสถานะรอยืนยัน');
         }
 
-        $item->status = 'ได้รับคืนแล้ว';
-        $item->save();
+        # คืน returned_date
+        DB::beginTransaction();
+
+        try {
+            $item->status = 'ได้รับคืนแล้ว';
+            $item->returned_date = date('Y-m-d');
+            $item->save();
+
+            DB::commit();
+        } catch (\Throwable $e) {
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'บันทึกไม่สำเร็จ กรุณาลองใหม่');
+        }
 
         return redirect()->back()->with('success', 'ยืนยันการส่งมอบ ' . $item->title . ' แล้ว');
     }

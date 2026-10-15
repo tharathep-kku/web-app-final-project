@@ -153,8 +153,21 @@ class ItemController extends Controller
         }
 
         $categories = Category::all();
-        $locations = Item::select('location')->distinct()->orderBy('location')->pluck('location');
-        $statuses = Item::select('status')->distinct()->orderBy('status')->pluck('status');
+
+        $allItems = Item::all();
+        $locations = [];
+        $statuses = [];
+        foreach ($allItems as $allItem) {
+            if (!in_array($allItem->location, $locations)) {
+                $locations[] = $allItem->location;
+            }
+            if (!in_array($allItem->status, $statuses)) {
+                $statuses[] = $allItem->status;
+            }
+        }
+        sort($locations);
+        sort($statuses);
+
         $history = session('search_history', []);
 
         return view('search', compact(

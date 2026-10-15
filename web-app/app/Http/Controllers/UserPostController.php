@@ -117,7 +117,8 @@ class UserPostController extends Controller
             return redirect()->route('profile.edit')->with('error', 'โพสต์ ' . $item->title . ' ส่งหลักฐานการคืนแล้ว ลบไม่ได้');
         }
 
-        $item->deleteWithFiles();
+        // soft delete: เก็บแถวและไฟล์ไว้ (deleted_at) หายจากทุกหน้าแต่กู้คืนได้
+        $item->delete();
 
         return redirect()->route('profile.edit')->with('success', 'ลบโพสต์ ' . $item->title . ' แล้ว');
     }

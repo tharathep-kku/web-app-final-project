@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Item extends Model
 {
+    use SoftDeletes;
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -54,7 +57,7 @@ class Item extends Model
         return $this->canSubmitEvidence();
     }
 
-    // ลบโพสต์พร้อมไฟล์ที่ผู้ใช้อัปโหลด (เฉพาะไฟล์ใน storage/ รูปตัวอย่างใน images/ ใช้ร่วมกันห้ามลบ)
+    // ลบถาวรพร้อมไฟล์ที่ผู้ใช้อัปโหลด (เฉพาะไฟล์ใน storage/ รูปตัวอย่างใน images/ ใช้ร่วมกันห้ามลบ)
     public function deleteWithFiles(): void
     {
         foreach ([$this->image_url, $this->evidence_url, $this->deposit_image_url] as $path) {
@@ -63,6 +66,6 @@ class Item extends Model
             }
         }
 
-        $this->delete();
+        $this->forceDelete();
     }
 }

@@ -238,3 +238,18 @@ button:not([class]) {
   text-align: right;
   border-top: 1px solid #eee;
 }
+
+
+
+/* ปุ่มหลัก 2 ทางเลือกหน้าแรก */
+.cta-wrap {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 1.25rem;
+  box-shadow: 0 2px 12px rgba(16, 24, 40, .07);
+}
+
+

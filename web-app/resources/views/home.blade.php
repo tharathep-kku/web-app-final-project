@@ -6,8 +6,8 @@
     @if (session('success'))
         <p class="alert alert-success"><strong>{{ session('success') }}</strong></p>
     @endif
-    <div class="row align-items-center g-4 mb-4">
-        <div class="col-lg-7">
+    <div class="row g-4 mb-4">
+        <div class="col-12">
             <h2 class="fw-bold">ศูนย์รวมแจ้งของหาย – พบของ ม.ขอนแก่น</h2>
             <p class="text-secondary">ปลอดภัย ตรวจสอบได้ มีหลักฐานยืนยันการส่งมอบทุกครั้ง</p>
 
@@ -18,40 +18,16 @@
                 <button type="submit" class="btn btn-primary btn-pop px-4">ค้นหา</button>
             </form>
 
-            <a href="{{ route('posts.create') }}" class="btn btn-danger btn-pop">ฉันทำของหาย</a>
-            <a href="{{ route('posts.create') }}" class="btn btn-primary btn-pop">ฉันเก็บของได้</a>
-        </div>
-
-        <div class="col-lg-5 bg-white rounded-4 shadow-sm gap-2  p-4 mb-4">
-            <div class="row g-2 text-center">
-                <div class="col-6">
-                    <div class="p-3 rounded-4" style="background:rgba(66,141,255,.15);">
-                        <div class="fs-3 fw-bold" style="font-family:'Baloo 2',sans-serif;">{{ $totalItem }}</div>
-                        <small>ประกาศทั้งหมด</small>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="p-3 rounded-4" style="background:rgba(252,185,94,.25);">
-                        <div class="fs-3 fw-bold" style="font-family:'Baloo 2',sans-serif;">{{ $waitingOwner }}</div>
-                        <small>ยังไม่พบเจ้าของ</small>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="p-3 rounded-4" style="background:rgba(174,211,137,.3);">
-                        <div class="fs-3 fw-bold" style="font-family:'Baloo 2',sans-serif;">{{ $returnedItem }}</div>
-                        <small>ได้รับคืนแล้ว</small>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="p-3 rounded-4" style="background:rgba(94,151,211,.2);">
-                        <div class="fs-3 fw-bold" style="font-family:'Baloo 2',sans-serif;">{{ $waitingConfirm }}</div>
-                        <small>รอแอดมินยืนยัน</small>
-                    </div>
-                </div>
+            <div class="d-flex gap-3 bg-white rounded-4 shadow-sm p-3">
+                <a href="{{ route('posts.create') }}" class="btn btn-danger btn-pop btn-lg flex-fill py-4 fs-4">ฉันทำของหาย</a>
+                <a href="{{ route('posts.create') }}" class="btn btn-primary btn-pop btn-lg flex-fill py-4 fs-4">ฉันเก็บของได้</a>
             </div>
         </div>
     </div>
-    <form method="GET" action="{{ route('home') }}" class="bg-white rounded-4 shadow-sm p-4 mb-4">
+    
+    <div class="row g-4 mb-4">
+        <div class="col-lg-6">
+                <form method="GET" action="{{ route('home') }}" class="bg-white rounded-4 shadow-sm p-4 h-100 d-flex flex-column justify-content-center">
         <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
             <span class="small fw-medium">ประเภทการแจ้ง:</span>
             <input type="radio" class="btn-check" id="type_all" name="type" value="" {{ $type === '' ? 'checked' : '' }}>
@@ -89,7 +65,40 @@
         </div>
 
         <button type="submit" class="btn btn-danger btn-pop px-4">กรองของหาย</button>
-    </form>
+        </form>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="bg-white rounded-4 shadow-sm p-4 h-100">
+                <div class="row g-2 text-center">
+                    <div class="col-6">
+                        <div class="p-3 rounded-4 h-100" style="background:rgba(66,141,255,.15);">
+                            <div class="fs-3 fw-bold" style="font-family:'Baloo 2',sans-serif;">{{ $totalItem }}</div>
+                            <small>ประกาศทั้งหมด</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="p-3 rounded-4 h-100" style="background:rgba(252,185,94,.25);">
+                            <div class="fs-3 fw-bold" style="font-family:'Baloo 2',sans-serif;">{{ $waitingOwner }}</div>
+                            <small>ยังไม่พบเจ้าของ</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="p-3 rounded-4 h-100" style="background:rgba(174,211,137,.3);">
+                            <div class="fs-3 fw-bold" style="font-family:'Baloo 2',sans-serif;">{{ $returnedItem }}</div>
+                            <small>ได้รับคืนแล้ว</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="p-3 rounded-4 h-100" style="background:rgba(94,151,211,.2);">
+                            <div class="fs-3 fw-bold" style="font-family:'Baloo 2',sans-serif;">{{ $waitingConfirm }}</div>
+                            <small>รอแอดมินยืนยัน</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- ---------- จำนวนผลลัพธ์ ---------- -->
     <p aria-live="polite" >
         พบ <strong>{{ $items->total() }}</strong> รายการที่ยังไม่เข้าคลัง

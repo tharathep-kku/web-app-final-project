@@ -188,7 +188,7 @@
                     <select id="category" name="category" class="form-select">
                         <option value="" {{ $category === '' ? 'selected' : '' }}>-- ทั้งหมด --</option>
                         @foreach ($categories as $cat)
-                            <option value="{{ $cat->id }}" {{ (string) $category === (string) $cat->id ? 'selected' : '' }}>{{ $cat->name }}</option>
+                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                         @endforeach
                     </select>
                 </div>

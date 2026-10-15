@@ -33,7 +33,7 @@
                 <select id="category" class="form-select" name="category">
                     <option value="" {{ $category === '' ? 'selected' : '' }}>-- เลือกหมวดหมู่ --</option>
                     @foreach ($categories as $cat)
-                        <option value="{{ $cat->id }}" {{ (string) $category === (string) $cat->id ? 'selected' : '' }}>{{ $cat->name }}</option>
+                        <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                     @endforeach
                 </select>
             </div>

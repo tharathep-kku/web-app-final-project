@@ -24,7 +24,7 @@
         <input class="form-control" type="email" id="email" name="email" placeholder="เช่น email@kku.ac.th" value="{{ old('email') }}" required><br>
 
         <label class="form-label fw-semibold" for="phone">เบอร์โทรศัพท์:</label><br>
-        <input class="form-control" type="tel" id="phone" name="phone" placeholder="เช่น 081-234-5678" value="{{ old('phone') }}" maxlength="12" pattern="0[0-9]{2}-[0-9]{3}-[0-9]{4}" required><br>
+        <input class="form-control" type="tel" id="phone" name="phone" placeholder="เช่น 081-234-5678" value="{{ old('phone') }}" maxlength="10" required><br>
 
         <label class="form-label fw-semibold" for="password">รหัสผ่าน:</label><br>
         <input class="form-control" type="password" id="password" name="password" placeholder="เช่น KkuReturn26" required>

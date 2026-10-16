@@ -103,7 +103,7 @@
 
                     <div>
                         <label class="form-label" for="phone">เบอร์โทรติดต่อ</label>
-                        <input type="tel" class="form-control rounded-pill" id="phone" name="phone" value="{{ old('phone', $item->reporter_phone) }}" maxlength="12" pattern="0[0-9]{2}-[0-9]{3}-[0-9]{4}" title="กรอกเบอร์โทร เช่น 081-234-5678">
+                        <input type="tel" class="form-control rounded-pill" id="phone" name="phone" value="{{ old('phone', $item->reporter_phone) }}" maxlength="10" title="กรอกเบอร์โทร เช่น 0812345678">
                         <small class="text-secondary">เบอร์โทรติดต่อ(ปัจจุบัน): {{ $item->reporter?->phone ?? 'ไม่ได้ระบุเบอร์โทรศัพท์' }}</small>
                     </div>
                 </div>

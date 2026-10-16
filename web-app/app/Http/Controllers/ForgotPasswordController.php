@@ -15,7 +15,6 @@ class ForgotPasswordController extends Controller
         return view('user.forgot-password');
     }
 
-    // ตั้งรหัสใหม่ได้เลยถ้าอีเมลกับชื่อตรงกับบัญชี (ไม่ส่งอีเมล)
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([

@@ -15,8 +15,7 @@ class EnsureUserIsAdmin
 
         if ($user === null || $user->role !== 'admin') {
             return redirect()
-                ->route('home')
-                ->with('error', 'หน้านี้สำหรับบัญชีแอดมินเท่านั้น');
+                ->route('home');
         }
 
         return $next($request);

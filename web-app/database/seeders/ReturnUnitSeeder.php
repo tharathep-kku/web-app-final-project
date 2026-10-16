@@ -6,13 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class ReturnUnitSeeder extends Seeder
-{
-    /**
-     * พิกัดดึงจาก OpenStreetMap (ตุลาคม 2026) — เป็นจุดกลางของอาคาร อาจคลาดจากเคาน์เตอร์จริงไม่กี่สิบเมตร
-     * ใช้ updateOrInsert ตาม id จึงรันซ้ำได้: แถวเดิมถูกอัปเดต แถวใหม่ถูกเพิ่ม ไม่เกิดข้อมูลซ้ำ
-     * และ items ที่อ้าง return_unit_id เดิมยังชี้จุดเดิมอยู่
-     * รันเฉพาะ seeder นี้: php artisan db:seed --class=ReturnUnitSeeder
-     */
+{   
     public function run(): void
     {
         $units = [

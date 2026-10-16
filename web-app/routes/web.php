@@ -28,10 +28,10 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/stats', [AdminController::class, 'stats'])->name('admin.stats');
-    Route::put('/admin/users/{uid}/ban', [AdminController::class, 'toggleBan'])->whereNumber('uid')->name('admin.users.ban');
-    Route::delete('/admin/{iid}', [AdminController::class, 'destroy'])->whereNumber('iid')->name('admin.destroy');
-    Route::put('/admin/{iid}/handover/confirm', [AdminController::class, 'confirmHandover'])->whereNumber('iid')->name('admin.handover.confirm');
-    Route::put('/admin/{iid}/handover/reject', [AdminController::class, 'rejectHandover'])->whereNumber('iid')->name('admin.handover.reject');
+    Route::put('/admin/users/{id}/ban', [AdminController::class, 'toggleBan'])->whereNumber('id')->name('admin.users.ban');
+    Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->whereNumber('id')->name('admin.destroy');
+    Route::put('/admin/{id}/handover/confirm', [AdminController::class, 'confirmHandover'])->whereNumber('id')->name('admin.handover.confirm');
+    Route::put('/admin/{id}/handover/reject', [AdminController::class, 'rejectHandover'])->whereNumber('id')->name('admin.handover.reject');
 });
 
 require __DIR__.'/settings.php';

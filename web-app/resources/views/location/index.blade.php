@@ -1,4 +1,4 @@
-@extends('layouts.site')
+    @extends('layouts.site')
 
 @section('title', 'จุดรับ-ส่งคืนของ')
 

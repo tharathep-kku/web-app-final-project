@@ -50,7 +50,6 @@ class AdminController extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-            // ponytail: ไม่แบ่งหน้า ถ้าผู้ใช้เยอะค่อยเปลี่ยนเป็น paginate()
             $users = User::orderBy('id')->get();
 
             $query = Item::query();

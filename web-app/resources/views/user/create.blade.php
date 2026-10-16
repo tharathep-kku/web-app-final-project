@@ -181,7 +181,7 @@
 
                     <div>
                         <label class="form-label" for="phone">เบอร์โทรติดต่อ <span class="text-danger">*</span></label>
-                        <input type="tel" class="form-control rounded-pill" id="phone" name="phone" placeholder="เช่น 081-234-5678" value="{{ old('phone') }}" maxlength="12" pattern="0[0-9]{2}-[0-9]{3}-[0-9]{4}" required>
+                        <input type="tel" class="form-control rounded-pill" id="phone" name="phone" placeholder="เช่น 0812345678" value="{{ old('phone') }}" maxlength="10" required>
                     </div>
                 </div>
             </div>
